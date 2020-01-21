@@ -64,7 +64,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     
     /// object that holds all data that was originally set for the chart, before it was modified or any filtering algorithms had been applied
     internal var _data: ChartData?
-    
+
     /// Flag that indicates if highlighting per tap (touch) is enabled
     private var _highlightPerTapEnabled = true
     
@@ -79,7 +79,8 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     internal var _drawUnitInChart = false
     
     /// The object representing the labels on the x-axis
-    internal var _xAxis: XAxis!
+    //internal var _xAxis: XAxis!
+    public var _xAxis: XAxis!
     
     /// The `Description` object of the chart.
     /// This should have been called just "description", but
@@ -115,6 +116,10 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     
     /// object responsible for animations
     internal var _animator: Animator!
+
+    public var animator: Animator! {
+        return _animator
+    }
     
     /// flag that indicates if offsets calculation has already been done or not
     private var _offsetsCalculated = false
@@ -353,7 +358,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     }
     
     /// Draws the description text in the bottom right corner of the chart (per default)
-    internal func drawDescription(context: CGContext)
+    open func drawDescription(context: CGContext)
     {
         // check if description should be drawn
         guard
@@ -578,7 +583,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     // MARK: - Markers
 
     /// draws all MarkerViews on the highlighted positions
-    internal func drawMarkers(context: CGContext)
+    open func drawMarkers(context: CGContext)
     {
         // if there is no marker view or drawing marker is disabled
         guard

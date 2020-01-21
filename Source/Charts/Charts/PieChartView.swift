@@ -86,7 +86,7 @@ open class PieChartView: PieRadarChartViewBase
         super.init(coder: aDecoder)
     }
     
-    internal override func initialize()
+    open override func initialize()
     {
         super.initialize()
         
@@ -129,7 +129,7 @@ open class PieChartView: PieRadarChartViewBase
         drawMarkers(context: context)
     }
     
-    internal override func calculateOffsets()
+    public override func calculateOffsets()
     {
         super.calculateOffsets()
         
@@ -152,7 +152,7 @@ open class PieChartView: PieRadarChartViewBase
         _circleBox.size.height = diameter - shift * 2.0
     }
     
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         calcAngles()
     }
@@ -423,12 +423,12 @@ open class PieChartView: PieRadarChartViewBase
         }
     }
     
-    internal override var requiredLegendOffset: CGFloat
+    open override var requiredLegendOffset: CGFloat
     {
         return _legend.font.pointSize * 2.0
     }
     
-    internal override var requiredBaseOffset: CGFloat
+    open override var requiredBaseOffset: CGFloat
     {
         return 0.0
     }

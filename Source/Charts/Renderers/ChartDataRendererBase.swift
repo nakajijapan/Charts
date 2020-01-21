@@ -30,7 +30,7 @@ open class DataRenderer: Renderer
     ///
     /// Renderers should ensure that the order of elements makes sense to a client presenting an audio-only interface to a user.
     /// Subclasses should populate this array in drawData() or drawDataSet() to make the chart accessible.
-    @objc final var accessibleChartElements: [NSUIAccessibilityElement] = []
+    @objc final public var accessibleChartElements: [NSUIAccessibilityElement] = []
 
     @objc public let animator: Animator
     
@@ -39,6 +39,10 @@ open class DataRenderer: Renderer
         self.animator = animator
 
         super.init(viewPortHandler: viewPortHandler)
+    }
+
+    @objc open func drawWebBackGround(context: CGContext)
+    {
     }
 
     @objc open func drawData(context: CGContext)
@@ -82,7 +86,7 @@ open class DataRenderer: Renderer
     ///   - data: A non optional data source about the chart
     ///   - defaultDescription: A simple string describing the type/design of Chart.
     /// - Returns: A header ```NSUIAccessibilityElement``` that can be added to accessibleChartElements.
-    @objc internal func createAccessibleHeader(usingChart chart: ChartViewBase,
+    @objc open func createAccessibleHeader(usingChart chart: ChartViewBase,
                                         andData data: ChartData,
                                         withDefaultDescription defaultDescription: String = "Chart") -> NSUIAccessibilityElement
     {

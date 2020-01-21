@@ -5,12 +5,12 @@ import Foundation
     import UIKit
 #endif
 
-internal func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostLayoutChangedNotification(withElement element: Any? = nil)
 {
     UIAccessibility.post(notification: UIAccessibility.Notification.layoutChanged, argument: element)
 }
 
-internal func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
+public func accessibilityPostScreenChangedNotification(withElement element: Any? = nil)
 {
     UIAccessibility.post(notification: UIAccessibility.Notification.screenChanged, argument: element)
 }
@@ -20,7 +20,7 @@ open class NSUIAccessibilityElement: UIAccessibilityElement
 {
     private weak var containerView: UIView?
 
-    final var isHeader: Bool = false
+    final public var isHeader: Bool = false
     {
         didSet
         {
@@ -28,7 +28,7 @@ open class NSUIAccessibilityElement: UIAccessibilityElement
         }
     }
 
-    final var isSelected: Bool = false
+    final public var isSelected: Bool = false
         {
         didSet
         {

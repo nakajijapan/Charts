@@ -56,7 +56,7 @@ open class PieRadarChartViewBase: ChartViewBase
         stopDeceleration()
     }
     
-    internal override func initialize()
+    open override func initialize()
     {
         super.initialize()
         
@@ -71,7 +71,7 @@ open class PieRadarChartViewBase: ChartViewBase
         #endif
     }
     
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         /*_xAxis.axisRange = Double((_data?.xVals.count ?? 0) - 1)*/
     }
@@ -98,7 +98,7 @@ open class PieRadarChartViewBase: ChartViewBase
         setNeedsDisplay()
     }
   
-    internal override func calculateOffsets()
+    open override func calculateOffsets()
     {
         var legendLeft = CGFloat(0.0)
         var legendRight = CGFloat(0.0)
@@ -368,14 +368,14 @@ open class PieRadarChartViewBase: ChartViewBase
     }
 
     /// The required offset for the chart legend.
-    internal var requiredLegendOffset: CGFloat
+    open var requiredLegendOffset: CGFloat
     {
         fatalError("requiredLegendOffset cannot be called on PieRadarChartViewBase")
     }
 
     /// - Returns: The base offset needed for the chart without calculating the
     /// legend size.
-    internal var requiredBaseOffset: CGFloat
+    open var requiredBaseOffset: CGFloat
     {
         fatalError("requiredBaseOffset cannot be called on PieRadarChartViewBase")
     }

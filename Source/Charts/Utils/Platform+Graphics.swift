@@ -9,12 +9,12 @@
 #if canImport(UIKit)
 import UIKit
 
-func NSUIGraphicsGetCurrentContext() -> CGContext?
+public func NSUIGraphicsGetCurrentContext() -> CGContext?
 {
     return UIGraphicsGetCurrentContext()
 }
 
-func NSUIGraphicsGetImageFromCurrentImageContext() -> NSUIImage!
+public func NSUIGraphicsGetImageFromCurrentImageContext() -> NSUIImage!
 {
     return UIGraphicsGetImageFromCurrentImageContext()
 }
@@ -54,7 +54,7 @@ func NSUIGraphicsBeginImageContextWithOptions(_ size: CGSize, _ opaque: Bool, _ 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 
-func NSUIGraphicsGetCurrentContext() -> CGContext?
+public func NSUIGraphicsGetCurrentContext() -> CGContext?
 {
     return NSGraphicsContext.current?.cgContext
 }

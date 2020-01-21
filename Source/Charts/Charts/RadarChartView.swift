@@ -54,7 +54,7 @@ open class RadarChartView: PieRadarChartViewBase
         super.init(coder: aDecoder)
     }
     
-    internal override func initialize()
+    open override func initialize()
     {
         super.initialize()
         
@@ -68,7 +68,7 @@ open class RadarChartView: PieRadarChartViewBase
         self.highlighter = RadarHighlighter(chart: self)
     }
 
-    internal override func calcMinMax()
+    open override func calcMinMax()
     {
         super.calcMinMax()
         
@@ -193,12 +193,12 @@ open class RadarChartView: PieRadarChartViewBase
         }
     }
     
-    internal override var requiredLegendOffset: CGFloat
+    open override var requiredLegendOffset: CGFloat
     {
         return _legend.font.pointSize * 4.0
     }
 
-    internal override var requiredBaseOffset: CGFloat
+    open override var requiredBaseOffset: CGFloat
     {
         return _xAxis.isEnabled && _xAxis.isDrawLabelsEnabled ? _xAxis.labelRotatedWidth : 10.0
     }
