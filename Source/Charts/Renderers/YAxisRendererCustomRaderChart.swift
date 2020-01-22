@@ -19,7 +19,7 @@ import Cocoa
 open class YAxisRendererCustomRaderChart: YAxisRenderer
 {
     private weak var chart: CustomRadarChartView?
-
+    var interval: Double = 0
     @objc public init(viewPortHandler: ViewPortHandler, yAxis: YAxis?, chart: CustomRadarChartView)
     {
         super.init(viewPortHandler: viewPortHandler, yAxis: yAxis, transformer: nil)
@@ -45,7 +45,7 @@ open class YAxisRendererCustomRaderChart: YAxisRenderer
 
         // Find out how much spacing (in yValue space) between axis values
         let rawInterval = range / Double(labelCount)
-        var interval = rawInterval.roundedToNextSignficant()
+        interval = rawInterval.roundedToNextSignficant()
 
         // If granularity is enabled, then do not allow the interval to go below specified granularity.
         // This is used to avoid repeated values when rounding values for display.
