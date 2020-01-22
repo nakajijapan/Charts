@@ -295,10 +295,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
         for j in (0 ..< labelCount).reversed()
         {
-            print("j: \(j)")
-
             let rr = CGFloat(chart.yAxis.entries[j] - chart.chartYMin) * factor
-            print("rr: \(rr)")
 
             context.setLineWidth(4)
             context.addArc(center: center, radius: rr, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
@@ -326,8 +323,6 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
     @objc open func drawWeb(context: CGContext)
     {
-        //drawCircles(context: context)
-
         guard
             let chart = chart,
             let data = chart.data
@@ -365,11 +360,6 @@ open class CustomRadarChartRenderer: LineRadarRenderer
             context.strokeLineSegments(between: _webLineSegmentsBuffer)
         }
 
-        // circle
-        print("factor: \(factor)")
-        //        context.addArc(center: center, radius: 20, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
-        //        context.setStrokeColor(UIColor.red.cgColor)
-
         // draw the inner-web
         context.setLineWidth(chart.innerWebLineWidth)
         context.setStrokeColor(chart.innerWebColor.cgColor)
@@ -377,11 +367,8 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
         let labelCount = chart.yAxis.entryCount
 
-        print("labelCount: \(labelCount)")
         for j in 0 ..< labelCount
         {
-            print("j: \(j)")
-
             for i in 0 ..< data.entryCount
             {
                 let r = CGFloat(chart.yAxis.entries[j] - chart.chartYMin) * factor
@@ -399,18 +386,6 @@ open class CustomRadarChartRenderer: LineRadarRenderer
         }
 
         context.restoreGState()
-
-        /*
-         drawHighlightCircle(
-         context: context,
-         atPoint: _highlightPointBuffer,
-         innerRadius: set.highlightCircleInnerRadius,
-         outerRadius: set.highlightCircleOuterRadius,
-         fillColor: set.highlightCircleFillColor,
-         strokeColor: strokeColor,
-         strokeWidth: set.highlightCircleStrokeWidth)
-         */
-
     }
 
     private var _highlightPointBuffer = CGPoint()
@@ -487,7 +462,6 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                         atPoint: _highlightPointBuffer,
                         innerRadius: set.highlightCircleInnerRadius,
                         outerRadius: set.highlightCircleOuterRadius,
-                        fillColor: set.highlightCircleFillColor,
                         strokeColor: strokeColor,
                         strokeWidth: set.highlightCircleStrokeWidth
                     )
@@ -505,23 +479,20 @@ open class CustomRadarChartRenderer: LineRadarRenderer
         atPoint point: CGPoint,
         innerRadius: CGFloat,
         outerRadius: CGFloat,
-        fillColor: NSUIColor?,
         strokeColor: NSUIColor?,
         strokeWidth: CGFloat)
     {
         context.saveGState()
 
-        if let fillColor = fillColor
+        context.beginPath()
+        context.addEllipse(in: CGRect(x: point.x - outerRadius, y: point.y - outerRadius, width: outerRadius * 2.0, height: outerRadius * 2.0))
+        if innerRadius > 0.0
         {
-            context.beginPath()
-            context.addEllipse(in: CGRect(x: point.x - outerRadius, y: point.y - outerRadius, width: outerRadius * 2.0, height: outerRadius * 2.0))
-            if innerRadius > 0.0
-            {
-                context.addEllipse(in: CGRect(x: point.x - innerRadius, y: point.y - innerRadius, width: innerRadius * 2.0, height: innerRadius * 2.0))
-            }
-
-            context.fillPath(using: .evenOdd)
+            context.addEllipse(in: CGRect(x: point.x - innerRadius, y: point.y - innerRadius, width: innerRadius * 2.0, height: innerRadius * 2.0))
         }
+
+        context.fillPath(using: .evenOdd)
+
 
         if let strokeColor = strokeColor
         {

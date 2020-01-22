@@ -181,8 +181,8 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
         self.removeObserver(self, forKeyPath: "bounds")
         self.removeObserver(self, forKeyPath: "frame")
     }
-    
-    internal func initialize()
+
+    open func initialize()
     {
         #if os(iOS)
         self.backgroundColor = NSUIColor.clear

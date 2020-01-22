@@ -55,7 +55,6 @@ open class CustomRadarChartView: PieRadarChartViewBase
         super.initialize()
 
         _yAxis = YAxis(position: .left)
-
         renderer = CustomRadarChartRenderer(chart: self, animator: _animator, viewPortHandler: _viewPortHandler)
 
         _yAxisRenderer = YAxisRendererCustomRaderChart(viewPortHandler: _viewPortHandler, yAxis: _yAxis, chart: self)
