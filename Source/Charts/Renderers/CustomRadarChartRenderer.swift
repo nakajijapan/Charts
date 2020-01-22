@@ -300,21 +300,20 @@ open class CustomRadarChartRenderer: LineRadarRenderer
             context.setLineWidth(4)
             context.addArc(center: center, radius: rr, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
             if j % 2 == 0 {
-                let color = UIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
+                let color = NSUIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
                 context.setFillColor(color.cgColor)
             } else {
-                context.setFillColor(UIColor.white.cgColor)
+                context.setFillColor(NSUIColor.white.cgColor)
             }
 
             if labelCount - 1 == j {
-                let color = UIColor(red: 1, green: 0.6784313725490196, blue: 0.8980392156862745, alpha: 1)
+                let color = NSUIColor(red: 1, green: 0.6784313725490196, blue: 0.8980392156862745, alpha: 1)
                 context.setFillColor(color.cgColor)
             }
 
-
             context.fillEllipse(in: CGRect(x: center.x - rr, y: center.y - rr, width: rr * 2, height: rr * 2))
 
-            context.setStrokeColor(UIColor.red.cgColor)
+            context.setStrokeColor(NSUIColor.red.cgColor)
             context.strokePath()
         }
 
@@ -541,7 +540,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
         context: CGContext,
         atPoint point: CGPoint,
         offsetPoint: CGPoint,
-        image: UIImage?
+        image: NSUIImage?
     )
     {
         context.saveGState()
