@@ -63,7 +63,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     internal var _defaultValueFormatter: IValueFormatter? = DefaultValueFormatter(decimals: 0)
     
     /// object that holds all data that was originally set for the chart, before it was modified or any filtering algorithms had been applied
-    internal var _data: ChartData?
+    public var _data: ChartData?
 
     /// Flag that indicates if highlighting per tap (touch) is enabled
     private var _highlightPerTapEnabled = true
@@ -87,7 +87,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     @objc open var chartDescription: Description?
         
     /// The legend object containing all data associated with the legend
-    internal var _legend: Legend!
+    public var _legend: Legend!
     
     /// delegate to receive chart events
     @objc open weak var delegate: ChartViewDelegate?
@@ -112,11 +112,10 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     @objc open var highlighter: IHighlighter?
     
     /// object that manages the bounds and drawing constraints of the chart
-    internal var _viewPortHandler: ViewPortHandler!
+    public var _viewPortHandler: ViewPortHandler!
     
     /// object responsible for animations
     internal var _animator: Animator!
-
     public var animator: Animator! {
         return _animator
     }
@@ -126,6 +125,9 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
     
     /// array of Highlight objects that reference the highlighted slices in the chart
     internal var _indicesToHighlight = [Highlight]()
+    public var indicesToHighlight: [Highlight] {
+        return _indicesToHighlight
+    }
     
     /// `true` if drawing the marker is enabled when tapping on values
     /// (use the `marker` property to specify a marker)

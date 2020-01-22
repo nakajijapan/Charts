@@ -203,12 +203,12 @@ open class AxisBase: ComponentBase
     /// Do not touch this directly, instead, use axisMinimum.
     /// This is automatically calculated to represent the real min value,
     /// and is used when calculating the effective minimum.
-    internal var _axisMinimum = Double(0)
+    open var _axisMinimum = Double(0)
     
     /// Do not touch this directly, instead, use axisMaximum.
     /// This is automatically calculated to represent the real max value,
     /// and is used when calculating the effective maximum.
-    internal var _axisMaximum = Double(0)
+    open var _axisMaximum = Double(0)
     
     /// the total range of values this axis covers
     @objc open var axisRange = Double(0)
