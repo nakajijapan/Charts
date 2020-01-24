@@ -152,7 +152,7 @@ open class CustomRadarChartView: PieRadarChartViewBase
     {
         let content = _viewPortHandler.contentRect
         return min(content.width / 2.0, content.height / 2.0)
-                / CGFloat(_yAxis.axisRange)
+            / CGFloat(_yAxis.axisRange)
     }
 
     /// The angle that each slice in the radar chart occupies.
@@ -171,7 +171,7 @@ open class CustomRadarChartView: PieRadarChartViewBase
         let max = _data?.maxEntryCountSet?.entryCount ?? 0
         return (0..<max).firstIndex {
             sliceAngle * CGFloat($0 + 1) - sliceAngle / 2.0 > a
-        } ?? max
+            } ?? max
     }
 
     /// The object that represents all y-labels of the RadarChart.
@@ -183,7 +183,7 @@ open class CustomRadarChartView: PieRadarChartViewBase
     /// Sets the number of web-lines that should be skipped on chart web before the next one is drawn. This targets the lines that come from the center of the RadarChart.
     /// if count = 1 -> 1 line is skipped in between
     @objc open var skipWebLineCount: Int
-    {
+        {
         get
         {
             return _skipWebLineCount
@@ -201,7 +201,8 @@ open class CustomRadarChartView: PieRadarChartViewBase
 
     open override var requiredBaseOffset: CGFloat
     {
-        return _xAxis.isEnabled && _xAxis.isDrawLabelsEnabled ? _xAxis.labelRotatedWidth : 10.0
+        return 64
+        //return _xAxis.isEnabled && _xAxis.isDrawLabelsEnabled ? _xAxis.labelRotatedWidth : 10.0
     }
 
     open override var radius: CGFloat
@@ -218,4 +219,32 @@ open class CustomRadarChartView: PieRadarChartViewBase
 
     /// The range of y-values this chart can display.
     @objc open var yRange: Double { return _yAxis.axisRange }
+
+    open override func calculateOffsets()
+    {
+        var legendLeft = CGFloat(0.0)
+        var legendRight = CGFloat(0.0)
+        var legendBottom = CGFloat(0.0)
+        var legendTop = CGFloat(0.0)
+
+
+        legendLeft += self.requiredBaseOffset
+        legendRight += self.requiredBaseOffset
+        legendTop += self.requiredBaseOffset
+        legendBottom += self.requiredBaseOffset
+
+        /*
+        legendTop += self.extraTopOffset
+        legendRight += self.extraRightOffset
+        legendBottom += self.extraBottomOffset
+        legendLeft += self.extraLeftOffset
+         */
+
+        let offsetLeft = legendLeft + 16
+        let offsetTop = legendTop + 16
+        let offsetRight = legendRight + 16
+        let offsetBottom = min(self.requiredBaseOffset, legendBottom)
+
+        _viewPortHandler.restrainViewPort(offsetLeft: offsetLeft, offsetTop: offsetTop, offsetRight: offsetRight, offsetBottom: offsetBottom)
+    }
 }

@@ -92,7 +92,6 @@ open class CustomRadarChartRenderer: LineRadarRenderer
         let accessibilityAxisLabelValueTuples = zip(accessibilityXLabels, accessibilityEntryValues).map { ($0, $1.0, $1.1) }.sorted { $0.1 > $1.1 }
         let accessibilityDataSetDescription: String = description + ". \(entryCount) \(prefix + (entryCount == 1 ? "" : "s")). "
         let accessibilityFrameWidth: CGFloat = 22.0 // To allow a tap target of 44x44
-
         var accessibilityEntryElements: [NSUIAccessibilityElement] = []
 
         for j in 0 ..< entryCount
@@ -123,7 +122,6 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
             let axp = center.moving(distance: CGFloat((accessibilityValue - chart.chartYMin) * Double(factor) * phaseY),
                                     atAngle: sliceangle * CGFloat(accessibilityValueIndex) * CGFloat(phaseX) + chart.rotationAngle)
-
             let axDescription = description + " - " + accessibilityLabel + ": \(accessibilityValue) \(chart.data?.accessibilityEntryLabelSuffix ?? "")"
             let axElement = createAccessibleElement(withDescription: axDescription,
                                                     container: chart,
@@ -295,7 +293,12 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
         for j in (0 ..< labelCount).reversed()
         {
-            let rr = CGFloat(chart.yAxis.entries[j] - chart.chartYMin) * factor
+            var rr = CGFloat(chart.yAxis.entries[j] - chart.chartYMin) * factor
+            print("j: \(j), rr: \(rr), chart.chartYMin: \(chart.chartYMin)")
+            // last circle is thin
+            if labelCount - 1 == j {
+                rr = CGFloat(chart.yAxis.entries[j] - chart.chartYMin - chart._yAxisRenderer.interval * 0.5) * factor
+            }
 
             context.setLineWidth(4)
             context.addArc(center: center, radius: rr, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
@@ -306,6 +309,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                 context.setFillColor(NSUIColor.white.cgColor)
             }
 
+            // change color to last circle
             if labelCount - 1 == j {
                 let color = NSUIColor(red: 1, green: 0.6784313725490196, blue: 0.8980392156862745, alpha: 1)
                 context.setFillColor(color.cgColor)
@@ -345,10 +349,11 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
         let xIncrements = 1 + chart.skipWebLineCount
         let maxEntryCount = chart.data?.maxEntryCountSet?.entryCount ?? 0
+        let distanse = CGFloat(chart.yRange - chart._yAxisRenderer.interval * 0.5)
 
         for i in stride(from: 0, to: maxEntryCount, by: xIncrements)
         {
-            let p = center.moving(distance: CGFloat(chart.yRange) * factor,
+            let p = center.moving(distance: distanse * factor,
                                   atAngle: sliceangle * CGFloat(i) + rotationangle)
 
             _webLineSegmentsBuffer[0].x = center.x
@@ -358,7 +363,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
             context.strokeLineSegments(between: _webLineSegmentsBuffer)
         }
-
+/*
         // draw the inner-web
         context.setLineWidth(chart.innerWebLineWidth)
         context.setStrokeColor(chart.innerWebColor.cgColor)
@@ -383,7 +388,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                 context.strokeLineSegments(between: _webLineSegmentsBuffer)
             }
         }
-
+*/
         context.restoreGState()
     }
 

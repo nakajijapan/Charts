@@ -75,7 +75,7 @@ class RadarChartViewController: DemoBaseViewController {
         l.xEntrySpace = 7
         l.yEntrySpace = 5
         l.textColor = .white
-//        chartView.legend = l
+        //chartView.legend = l
 
         self.updateChartData()
         

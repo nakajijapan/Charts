@@ -107,7 +107,7 @@ open class AxisRendererBase: Renderer
         // Find out how much spacing (in y value space) between axis values
         let rawInterval = range / Double(labelCount)
         var interval = rawInterval.roundedToNextSignficant()
-        
+        print("rawInterval: \(rawInterval), interval: \(interval)")
         // If granularity is enabled, then do not allow the interval to go below specified granularity.
         // This is used to avoid repeated values when rounding values for display.
         if axis.granularityEnabled
@@ -137,7 +137,8 @@ open class AxisRendererBase: Renderer
             axis.entries.reserveCapacity(labelCount)
             
             var v = yMin
-            
+            print("isForceLabelsEnabled: \(axis.isForceLabelsEnabled), v: \(v), interval: \(interval)")
+
             for _ in 0 ..< labelCount
             {
                 axis.entries.append(v)
@@ -184,7 +185,7 @@ open class AxisRendererBase: Renderer
                     // Fix for IEEE negative zero case (Where value == -0.0, and 0.0 == -0.0)
                     f = 0.0
                 }
-                
+                print("isForceLabelsEnabled: \(axis.isForceLabelsEnabled), v: \(f)")
                 axis.entries.append(Double(f))
                 
                 f += interval
