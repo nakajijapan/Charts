@@ -13,7 +13,7 @@ import Foundation
 import CoreGraphics
 
 #if canImport(UIKit)
-    import UIKit
+import UIKit
 #endif
 
 #if canImport(Cocoa)
@@ -126,7 +126,8 @@ open class ChartUtils
         image: NSUIImage,
         x: CGFloat,
         y: CGFloat,
-        size: CGSize)
+        size: CGSize
+    )
     {
         var drawOffset = CGPoint()
         drawOffset.x = x - (size.width / 2)
@@ -146,7 +147,7 @@ open class ChartUtils
                 NSUIGraphicsBeginImageContextWithOptions(size, false, 0.0)
                 
                 image.draw(in: CGRect(origin: CGPoint(x: 0, y: 0), size: size))
-                
+
                 scaledImage = NSUIGraphicsGetImageFromCurrentImageContext()
                 NSUIGraphicsEndImageContext()
                 
@@ -159,11 +160,13 @@ open class ChartUtils
         else
         {
             image.draw(in: CGRect(origin: drawOffset, size: size))
+
         }
         
         NSUIGraphicsPopContext()
     }
-    
+
+
     open class func drawText(context: CGContext, text: String, point: CGPoint, align: NSTextAlignment, attributes: [NSAttributedString.Key : Any]?)
     {
         var point = point

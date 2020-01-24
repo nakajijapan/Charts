@@ -97,4 +97,12 @@ open class DefaultAxisValueFormatter: NSObject, IAxisValueFormatter
             return formatter?.string(from: NSNumber(floatLiteral: value)) ?? ""
         }
     }
+
+    public func imageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+
+    public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
 }

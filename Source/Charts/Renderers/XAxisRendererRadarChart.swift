@@ -63,6 +63,7 @@ open class XAxisRendererRadarChart: XAxisRenderer
                       attributes: [NSAttributedString.Key.font: labelFont, NSAttributedString.Key.foregroundColor: labelTextColor],
                       anchor: drawLabelAnchor,
                       angleRadians: labelRotationAngleRadians)
+
         }
     }
     
@@ -83,7 +84,6 @@ open class XAxisRendererRadarChart: XAxisRenderer
             anchor: anchor,
             angleRadians: angleRadians)
     }
-    
     open override func renderLimitLines(context: CGContext)
     {
         /// XAxis LimitLines on RadarChart not yet supported.

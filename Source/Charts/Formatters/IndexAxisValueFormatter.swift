@@ -56,4 +56,11 @@ open class IndexAxisValueFormatter: NSObject, IAxisValueFormatter
         guard values.indices.contains(index), index == Int(value) else { return "" }
         return _values[index]
     }
+
+    public func imageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
 }

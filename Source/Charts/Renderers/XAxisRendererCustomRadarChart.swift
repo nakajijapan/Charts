@@ -47,18 +47,34 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
         {
 
             let label = xAxis.valueFormatter?.stringForValue(Double(i), axis: xAxis) ?? ""
-
             let angle = (sliceangle * CGFloat(i) + chart.rotationAngle).truncatingRemainder(dividingBy: 360.0)
-
             let p = center.moving(distance: CGFloat(chart.yRange) * factor + xAxis.labelRotatedWidth / 2.0, atAngle: angle)
 
             drawLabel(context: context,
                       formattedLabel: label,
                       x: p.x,
-                      y: p.y - xAxis.labelRotatedHeight / 2.0,
+                      y: p.y + xAxis.labelRotatedHeight * 1.2,
                       attributes: [NSAttributedString.Key.font: labelFont, NSAttributedString.Key.foregroundColor: labelTextColor],
                       anchor: drawLabelAnchor,
                       angleRadians: labelRotationAngleRadians)
+
+            if let image = xAxis.valueFormatter?.imageForValue(Double(i), axis: xAxis) {
+                drawImage(
+                    context: context,
+                    image: image,
+                    x: p.x,
+                    y: p.y - xAxis.labelRotatedHeight / 2.0
+                )
+            }
+            if let extraImage = xAxis.valueFormatter?.extraImageForValue(Double(i), axis: xAxis) {
+                drawImage(
+                    context: context,
+                    image: extraImage,
+                    x: p.x,
+                    y: p.y + xAxis.labelRotatedHeight * 2.5
+                )
+            }
+
         }
     }
 
@@ -78,6 +94,38 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
             attributes: attributes,
             anchor: anchor,
             angleRadians: angleRadians)
+    }
+
+    @objc open func drawImage(
+        context: CGContext,
+        image: NSUIImage,
+        x: CGFloat,
+        y: CGFloat
+    )
+    {
+        ChartUtils.drawImage(
+            context: context,
+            image: image,
+            x: x, y: y,
+            size: image.size
+        )
+
+
+    }
+
+    @objc open func drawExtraImage(
+        context: CGContext,
+        image: NSUIImage,
+        x: CGFloat,
+        y: CGFloat
+    )
+    {
+        ChartUtils.drawImage(
+            context: context,
+            image: image,
+            x: x, y: y,
+            size: image.size
+        )
     }
 
     open override func renderLimitLines(context: CGContext)

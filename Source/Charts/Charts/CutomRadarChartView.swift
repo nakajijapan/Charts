@@ -40,6 +40,9 @@ open class CustomRadarChartView: PieRadarChartViewBase
     public var _yAxisRenderer: YAxisRendererCustomRaderChart!
     public var _xAxisRenderer: XAxisRendererCustomRadarChart!
 
+    // 外枠の円
+    @objc open var lastCircleColor = NSUIColor(red: 1, green: 0.6784313725490196, blue: 0.8980392156862745, alpha: 1)
+
     public override init(frame: CGRect)
     {
         super.init(frame: frame)

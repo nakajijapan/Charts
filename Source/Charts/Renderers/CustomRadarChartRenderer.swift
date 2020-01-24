@@ -245,10 +245,10 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                     context: context,
                     atPoint: p,
                     innerRadius: 0,
-                    outerRadius: 4,
+                    outerRadius: 3.5,
                     fillColor: NSUIColor.white,
                     strokeColor:  NSUIColor.blue,
-                    strokeWidth: 2)
+                    strokeWidth: 3)
 
                 drawTitleIcon(context: context, atPoint: p, offsetPoint: CGPoint(x: 8, y: 8), image: e.icon)
                 /*
@@ -294,7 +294,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
         for j in (0 ..< labelCount).reversed()
         {
             var rr = CGFloat(chart.yAxis.entries[j] - chart.chartYMin) * factor
-            print("j: \(j), rr: \(rr), chart.chartYMin: \(chart.chartYMin)")
+
             // last circle is thin
             if labelCount - 1 == j {
                 rr = CGFloat(chart.yAxis.entries[j] - chart.chartYMin - chart._yAxisRenderer.interval * 0.5) * factor
@@ -311,7 +311,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
             // change color to last circle
             if labelCount - 1 == j {
-                let color = NSUIColor(red: 1, green: 0.6784313725490196, blue: 0.8980392156862745, alpha: 1)
+                let color = chart.lastCircleColor
                 context.setFillColor(color.cgColor)
             }
 
@@ -363,32 +363,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
             context.strokeLineSegments(between: _webLineSegmentsBuffer)
         }
-/*
-        // draw the inner-web
-        context.setLineWidth(chart.innerWebLineWidth)
-        context.setStrokeColor(chart.innerWebColor.cgColor)
-        context.setAlpha(chart.webAlpha)
 
-        let labelCount = chart.yAxis.entryCount
-
-        for j in 0 ..< labelCount
-        {
-            for i in 0 ..< data.entryCount
-            {
-                let r = CGFloat(chart.yAxis.entries[j] - chart.chartYMin) * factor
-
-                let p1 = center.moving(distance: r, atAngle: sliceangle * CGFloat(i) + rotationangle)
-                let p2 = center.moving(distance: r, atAngle: sliceangle * CGFloat(i + 1) + rotationangle)
-
-                _webLineSegmentsBuffer[0].x = p1.x
-                _webLineSegmentsBuffer[0].y = p1.y
-                _webLineSegmentsBuffer[1].x = p2.x
-                _webLineSegmentsBuffer[1].y = p2.y
-
-                context.strokeLineSegments(between: _webLineSegmentsBuffer)
-            }
-        }
-*/
         context.restoreGState()
     }
 
