@@ -67,7 +67,7 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
                 )
             }
             if let extraImage = xAxis.valueFormatter?.extraImageForValue(Double(i), axis: xAxis) {
-                drawImage(
+                drawExtraImage(
                     context: context,
                     image: extraImage,
                     x: p.x,
@@ -109,8 +109,6 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
             x: x, y: y,
             size: image.size
         )
-
-
     }
 
     @objc open func drawExtraImage(
@@ -120,11 +118,12 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
         y: CGFloat
     )
     {
-        ChartUtils.drawImage(
+        ChartUtils.extraDrawImage(
             context: context,
             image: image,
             x: x, y: y,
-            size: image.size
+            size: image.size,
+            angle: -CGFloat.pi * 0.1
         )
     }
 

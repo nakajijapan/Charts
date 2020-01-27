@@ -109,8 +109,6 @@ open class CustomRadarChartView: PieRadarChartViewBase
             _xAxisRenderer.computeAxis(min: _xAxis._axisMinimum, max: _xAxis._axisMaximum, inverted: false)
         }
 
-        _xAxisRenderer?.renderAxisLabels(context: context)
-
 
         if _yAxis.isEnabled && _yAxis.isDrawLimitLinesBehindDataEnabled
         {
@@ -148,6 +146,9 @@ open class CustomRadarChartView: PieRadarChartViewBase
         drawDescription(context: context)
 
         drawMarkers(context: context)
+
+        _xAxisRenderer?.renderAxisLabels(context: context)
+
     }
 
     /// The factor that is needed to transform values into pixels.

@@ -167,6 +167,29 @@ open class ChartUtils
     }
 
 
+    open class func extraDrawImage(
+           context: CGContext,
+           image: NSUIImage,
+           x: CGFloat,
+           y: CGFloat,
+           size: CGSize,
+           angle: CGFloat
+       )
+       {
+        var drawOffset = CGPoint()
+        drawOffset.x = x
+        drawOffset.y = y
+        context.saveGState()
+
+        context.translateBy(x: drawOffset.x, y: drawOffset.y)
+        context.rotate(by: angle)
+
+        image.draw(in: CGRect(origin: CGPoint(x: -(size.width / 2), y: -(size.height / 2)), size: size))
+
+        context.restoreGState()
+       }
+
+
     open class func drawText(context: CGContext, text: String, point: CGPoint, align: NSTextAlignment, attributes: [NSAttributedString.Key : Any]?)
     {
         var point = point
