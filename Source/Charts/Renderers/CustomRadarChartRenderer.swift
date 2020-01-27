@@ -303,10 +303,9 @@ open class CustomRadarChartRenderer: LineRadarRenderer
             context.setLineWidth(4)
             context.addArc(center: center, radius: rr, startAngle: 0, endAngle: CGFloat.pi * 2, clockwise: true)
             if j % 2 == 0 {
-                let color = NSUIColor(red: 0.97, green: 0.97, blue: 0.97, alpha: 1)
-                context.setFillColor(color.cgColor)
+                context.setFillColor(chart.evenCircleColor.cgColor)
             } else {
-                context.setFillColor(NSUIColor.white.cgColor)
+                context.setFillColor(chart.oddCircleColor.cgColor)
             }
 
             // change color to last circle
