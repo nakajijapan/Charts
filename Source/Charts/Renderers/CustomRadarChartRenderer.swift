@@ -325,10 +325,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
 
     @objc open func drawWeb(context: CGContext)
     {
-        guard
-            let chart = chart,
-            let data = chart.data
-            else { return }
+        guard let chart = chart else { return }
 
         let sliceangle = chart.sliceAngle
 
