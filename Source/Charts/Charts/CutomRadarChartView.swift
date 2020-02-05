@@ -251,7 +251,7 @@ open class CustomRadarChartView: PieRadarChartViewBase
          */
 
         let offsetLeft = legendLeft + 16
-        let offsetTop = legendTop + 16
+        let offsetTop = legendTop + 16 + extraTopOffset
         let offsetRight = legendRight + 16
         let offsetBottom = min(self.requiredBaseOffset, legendBottom)
 
