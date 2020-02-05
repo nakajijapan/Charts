@@ -241,6 +241,10 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                     )
                 }
 
+                if center == p {
+                    continue
+                }
+
                 drawValueCircle(
                     context: context,
                     atPoint: p,
@@ -250,7 +254,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                     strokeColor:  chart.valueCircleStrokeColor,
                     strokeWidth: 3)
 
-                drawTitleIcon(context: context, atPoint: p, offsetPoint: CGPoint(x: 8, y: 8), image: e.icon)
+                //drawTitleIcon(context: context, atPoint: p, offsetPoint: CGPoint(x: 8, y: 8), image: e.icon)
                 /*
                  if let icon = e.icon, dataSet.isDrawIconsEnabled
                  {
