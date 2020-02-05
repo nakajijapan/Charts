@@ -45,6 +45,10 @@ open class CustomRadarChartView: PieRadarChartViewBase
     @objc open var oddCircleColor = NSUIColor.gray
     @objc open var evenCircleColor = NSUIColor.white
 
+    // Pointer
+    open var valueCircleFillColor = NSUIColor.white
+    open var valueCircleStrokeColor = NSUIColor.red
+
     public override init(frame: CGRect)
     {
         super.init(frame: frame)

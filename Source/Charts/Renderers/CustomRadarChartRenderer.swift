@@ -246,8 +246,8 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                     atPoint: p,
                     innerRadius: 0,
                     outerRadius: 3.5,
-                    fillColor: NSUIColor.white,
-                    strokeColor:  NSUIColor.blue,
+                    fillColor: chart.valueCircleFillColor,
+                    strokeColor:  chart.valueCircleStrokeColor,
                     strokeWidth: 3)
 
                 drawTitleIcon(context: context, atPoint: p, offsetPoint: CGPoint(x: 8, y: 8), image: e.icon)
