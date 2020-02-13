@@ -69,11 +69,13 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
             }
 
             if let extraImage = xAxis.valueFormatter?.extraImageForValue(Double(i), axis: xAxis) {
+                let extraImagePointBase = CGPoint(x: p.x, y: p.y - xAxis.labelRotatedHeight / 2.0)
+                let extraImagePoint = xAxis.valueFormatter?.extraImagePointForValue(Double(i), axis: xAxis, basePoint: extraImagePointBase) ?? extraImagePointBase
                 drawExtraImage(
                     context: context,
                     image: extraImage,
-                    x: p.x,
-                    y: p.y - xAxis.labelRotatedHeight * 2.0
+                    x: extraImagePoint.x,
+                    y: extraImagePoint.y
                 )
             }
 

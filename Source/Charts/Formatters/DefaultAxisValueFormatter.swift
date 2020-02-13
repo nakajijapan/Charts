@@ -110,4 +110,7 @@ open class DefaultAxisValueFormatter: NSObject, IAxisValueFormatter
         return basePoint
     }
 
+    public func extraImagePointForValue(_ value: Double, axis: AxisBase?, basePoint: CGPoint) -> CGPoint {
+        basePoint
+    }
 }

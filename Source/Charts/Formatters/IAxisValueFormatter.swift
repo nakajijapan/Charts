@@ -29,5 +29,6 @@ public protocol IAxisValueFormatter: class
     func imageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage?
     func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage?
     func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint
-    
+    func extraImagePointForValue(_ value: Double, axis: AxisBase?, basePoint: CGPoint) -> CGPoint
+
 }
