@@ -48,6 +48,7 @@ open class CustomRadarChartView: PieRadarChartViewBase
     // Pointer
     open var valueCircleFillColor = NSUIColor.white
     open var valueCircleStrokeColor = NSUIColor.red
+    open var extraDrawImageAngle: CGFloat = -CGFloat.pi * 0.1
 
     public override init(frame: CGRect)
     {

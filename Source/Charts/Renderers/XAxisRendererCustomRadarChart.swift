@@ -48,7 +48,8 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
 
             let label = xAxis.valueFormatter?.stringForValue(Double(i), axis: xAxis) ?? ""
             let angle = (sliceangle * CGFloat(i) + chart.rotationAngle).truncatingRemainder(dividingBy: 360.0)
-            let p = center.moving(distance: CGFloat(chart.yRange) * factor + xAxis.labelRotatedWidth / 2.0, atAngle: angle)
+            var p = center.moving(distance: CGFloat(chart.yRange) * factor + xAxis.labelRotatedWidth / 2.0, atAngle: angle)
+            p = xAxis.valueFormatter?.drawLabelPoint(basePoint: p, axis: xAxis, angle: angle) ?? p
 
             drawLabel(context: context,
                       formattedLabel: label,
@@ -66,12 +67,13 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
                     y: p.y - xAxis.labelRotatedHeight / 2.0
                 )
             }
+
             if let extraImage = xAxis.valueFormatter?.extraImageForValue(Double(i), axis: xAxis) {
                 drawExtraImage(
                     context: context,
                     image: extraImage,
                     x: p.x,
-                    y: p.y + xAxis.labelRotatedHeight * 2.5
+                    y: p.y - xAxis.labelRotatedHeight * 2.0
                 )
             }
 
@@ -123,7 +125,7 @@ open class XAxisRendererCustomRadarChart: XAxisRenderer
             image: image,
             x: x, y: y,
             size: image.size,
-            angle: -CGFloat.pi * 0.1
+            angle: chart?.extraDrawImageAngle ?? 0
         )
     }
 

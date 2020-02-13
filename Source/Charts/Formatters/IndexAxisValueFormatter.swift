@@ -15,6 +15,7 @@ import Foundation
 @objc(ChartIndexAxisValueFormatter)
 open class IndexAxisValueFormatter: NSObject, IAxisValueFormatter
 {
+
     private var _values: [String] = [String]()
     private var _valueCount: Int = 0
     
@@ -62,5 +63,8 @@ open class IndexAxisValueFormatter: NSObject, IAxisValueFormatter
     }
     public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
         nil
+    }
+    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+        return basePoint
     }
 }

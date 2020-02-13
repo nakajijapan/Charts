@@ -35,7 +35,7 @@ open class XAxis: AxisBase
     @objc open var labelRotatedWidth = CGFloat(1.0)
     
     /// height of the (rotated) x-axis labels in pixels - this is automatically calculated by the `computeSize()` methods in the renderers
-    @objc open var labelRotatedHeight = CGFloat(1.0)
+    @objc open var labelRotatedHeight = CGFloat(0)
     
     /// This is the angle for drawing the X axis labels (in degrees)
     @objc open var labelRotationAngle = CGFloat(0.0)

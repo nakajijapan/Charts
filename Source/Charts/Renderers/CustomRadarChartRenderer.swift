@@ -251,7 +251,7 @@ open class CustomRadarChartRenderer: LineRadarRenderer
                     innerRadius: 0,
                     outerRadius: 3.5,
                     fillColor: chart.valueCircleFillColor,
-                    strokeColor:  chart.valueCircleStrokeColor,
+                    strokeColor: chart.valueCircleStrokeColor,
                     strokeWidth: 3)
 
                 //drawTitleIcon(context: context, atPoint: p, offsetPoint: CGPoint(x: 8, y: 8), image: e.icon)

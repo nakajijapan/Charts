@@ -105,4 +105,9 @@ open class DefaultAxisValueFormatter: NSObject, IAxisValueFormatter
     public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
         nil
     }
+
+    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+        return basePoint
+    }
+
 }
