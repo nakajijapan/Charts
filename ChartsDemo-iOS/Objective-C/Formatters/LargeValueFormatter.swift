@@ -17,7 +17,7 @@ open class LargeValueFormatter: NSObject, IValueFormatter, IAxisValueFormatter
         nil
     }
     
-    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+    public func drawLabelPoint(_ value: Double, basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
         .zero
     }
     
