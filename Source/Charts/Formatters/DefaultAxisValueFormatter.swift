@@ -106,7 +106,7 @@ open class DefaultAxisValueFormatter: NSObject, IAxisValueFormatter
         nil
     }
 
-    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+    public func drawLabelPoint(_ value: Double, basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
         return basePoint
     }
 
