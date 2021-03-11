@@ -12,6 +12,22 @@ private let MAX_LENGTH = 5
 @objc protocol Testing123 { }
 
 public class LargeValueFormatter: NSObject, IValueFormatter, IAxisValueFormatter {
+    public func imageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+        .zero
+    }
+    
+    public func extraImagePointForValue(_ value: Double, axis: AxisBase?, basePoint: CGPoint) -> CGPoint {
+        .zero
+    }
+    
     
     /// Suffix to be appended after the values.
     ///

@@ -10,6 +10,22 @@ import Foundation
 import Charts
 
 public class DayAxisValueFormatter: NSObject, IAxisValueFormatter {
+    public func imageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+        .zero
+    }
+    
+    public func extraImagePointForValue(_ value: Double, axis: AxisBase?, basePoint: CGPoint) -> CGPoint {
+        .zero
+    }
+    
     weak var chart: BarLineChartViewBase?
     let months = ["Jan", "Feb", "Mar",
                   "Apr", "May", "Jun",

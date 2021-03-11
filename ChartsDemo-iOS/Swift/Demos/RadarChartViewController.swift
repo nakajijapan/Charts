@@ -199,6 +199,22 @@ class RadarChartViewController: DemoBaseViewController {
 }
 
 extension RadarChartViewController: IAxisValueFormatter {
+    public func imageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+        .zero
+    }
+    
+    public func extraImagePointForValue(_ value: Double, axis: AxisBase?, basePoint: CGPoint) -> CGPoint {
+        .zero
+    }
+    
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         return activities[Int(value) % activities.count]
     }

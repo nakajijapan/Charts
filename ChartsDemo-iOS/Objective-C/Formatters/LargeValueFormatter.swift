@@ -9,6 +9,22 @@ import Charts
 
 open class LargeValueFormatter: NSObject, IValueFormatter, IAxisValueFormatter
 {
+    public func imageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
+        nil
+    }
+    
+    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+        .zero
+    }
+    
+    public func extraImagePointForValue(_ value: Double, axis: AxisBase?, basePoint: CGPoint) -> CGPoint {
+        .zero
+    }
+    
     fileprivate static let MAX_LENGTH = 5
     
     /// Suffix to be appended after the values.
