@@ -64,7 +64,7 @@ open class IndexAxisValueFormatter: NSObject, IAxisValueFormatter
     public func extraImageForValue(_ value: Double, axis: AxisBase?) -> NSUIImage? {
         nil
     }
-    public func drawLabelPoint(_ value: Double, basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
+    public func drawLabelPoint(basePoint: CGPoint, axis: AxisBase?, angle: CGFloat) -> CGPoint {
         return basePoint
     }
     public func extraImagePointForValue(_ value: Double, axis: AxisBase?, basePoint: CGPoint) -> CGPoint {
